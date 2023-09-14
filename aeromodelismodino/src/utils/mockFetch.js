@@ -39,18 +39,18 @@ const products = [
   }) 
   */
 
-  export const mfetch = (pid)=> new Promise((res,rej)=>{
-    
-    
-    //const condition = true
-
-    if(pid){
-      setTimeout(()=>{
-        res(pid ? products.find(product=>product.id==pid) : products)
-      },3000)
-        
-     } else{
-      
-    }
-
-}) 
+  export const mfetch = (pid) => new Promise((res, rej) => {
+    setTimeout(() => {
+      if (pid) {
+        const product = products.find(product => product.id === pid);
+        if (product) {
+          res(product);
+        } else {
+          rej(new Error('Product not found')); // Si el pid no encuentra un producto, rechaza la promesa
+        }
+      } else {
+        res(products); // Si no se proporciona un pid, devuelve todos los productos
+      }
+    }, 3000);
+  });
+  

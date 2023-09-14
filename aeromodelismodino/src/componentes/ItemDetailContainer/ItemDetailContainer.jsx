@@ -1,25 +1,27 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import ItemDetail from "./ItemDetail/ItemDetail"
 import { mfetch } from "../../utils/mockFetch"
 
 
 const ItemDetailContainer = () => {
 
+    const [product,setProduct] = useState({})
+
 //LLAMADA A API
 
+const productId = 3;
+
 useEffect(() => {
-//aca se llama a la api
+  mfetch(productId)
+    .then(resp => setProduct(resp))
+    .catch(err => console.log(err))
+}, [productId]);
 
-mfetch(2
-    )
-.then(resp => console.log(resp))
-
-},[])
 ///como tiene que ser usado 1 sola vez se agrega el array de dependencias luego que renderize el return.
   return (
     <div>
 
-      <ItemDetail/>
+      <ItemDetail product={product}/>
 
     </div>
   )

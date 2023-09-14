@@ -8,14 +8,13 @@ export const ItemListContainer = () => {
   const [products,setProduct] = useState([])
   const [loading,setLoading] = useState(true)
     
-  useEffect(() =>{
+  useEffect(() => {
     mfetch()
-    .then(res=> setProduct(res) )
-    .finally(() => setLoading(false))
-    
-
-
-  },[])
+      .then(res => setProduct(res))
+      .catch(err => console.log(err)) // Puedes manejar errores aquí
+      .finally(() => setLoading(false))
+  }, []);
+  
   console.log(products)
   
   return (
