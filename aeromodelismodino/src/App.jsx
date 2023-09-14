@@ -9,16 +9,10 @@ import ItemDetailContainer from './componentes/ItemDetailContainer/ItemDetailCon
 
 function App() {
 
-  const onAdd = ( count ) => {
-
-    console.log('productos seleccionados',count)
-    }
-
   return (
     <>
      <NavBar/>
      <ItemListContainer/>
-     <ItemCount initial={1} stock={4} onAdd={onAdd}/>
      <ItemDetailContainer/>
     </>
   )

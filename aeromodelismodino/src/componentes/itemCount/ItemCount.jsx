@@ -1,12 +1,25 @@
 
-import { useCounter } from "../hooks/useCounter"
+import { useState } from "react"
+
+
 
 
 
 
 const ItemCount = ({initial, stock, onAdd}) => {
+    const [Counter, setCounter] = useState(initial)
 
-    const{ count,handleAdd,handleSubstrack } = useCounter(initial, stock)
+
+  const handleAdd = () => {
+      if (Counter < stock){
+          setCounter(Counter + 1)
+      }
+  }
+  const handleSubstract = () => {
+      if (Counter > initial){
+        setCounter(Counter - 1)
+    }
+  }
 
   return (
     <center>
@@ -14,10 +27,10 @@ const ItemCount = ({initial, stock, onAdd}) => {
             <h2>Counter</h2>
             <button onClick={handleAdd}> + 1 </button>
             <label>
-                <strong>{ count }</strong>
+                <strong>{ Counter }</strong>
             </label>
-            <button onClick={handleSubstrack}> - 1 </button>
-            <button onClick={()=> onAdd(count )}> Agregar al Carrito </button>
+            <button onClick={handleSubstract}> - 1 </button>
+            <button onClick={()=> onAdd(Counter)}> Agregar al Carrito </button>
 
 
         </div>
