@@ -5,10 +5,10 @@ const products = [
     {id: 3,nombre:'producto3',price: 3000,stock:200,imageUrl:'https://media.istockphoto.com/id/136541615/es/foto/avi%C3%B3n-modelo.jpg?s=612x612&w=0&k=20&c=eGt4s7YtW5rJQPMaXhps9A7QcuSLSKbIgZ4lKUD2U3U=', description: 'descripcion3'},
     {id: 4,nombre:'producto4',price: 4000,stock:50,imageUrl:'https://media.istockphoto.com/id/136541615/es/foto/avi%C3%B3n-modelo.jpg?s=612x612&w=0&k=20&c=eGt4s7YtW5rJQPMaXhps9A7QcuSLSKbIgZ4lKUD2U3U=', description: 'descripcion4'}]
     
-   export const mfetch = ()=> new Promise((res,rej)=>{
+ /*  export const mfetch = ()=> new Promise((res,rej)=>{
     
-    
-        const condition = true
+    //aca se exportan todos los productos, nosotros necesitamos que exporte solo uno .seguir el mfetch de abajo
+       const condition = true
     
         if(condition){
           setTimeout(()=>{
@@ -16,8 +16,41 @@ const products = [
           },3000)
             
          } else{
-            rej('dinero no devuelto')
+         
         }
     
-    }) 
+    }) */
 
+//exporta un solo producto con el [0]indicando la primera posicion del array
+  /*  export const mfetchNuevo = ()=> new Promise((res,rej)=>{
+    
+    
+      const condition = true
+  
+      if(condition){
+        setTimeout(()=>{
+          res(products[0])
+        },3000)
+          
+       } else{
+        
+      }
+  
+  }) 
+  */
+
+  export const mfetch = (pid)=> new Promise((res,rej)=>{
+    
+    
+    //const condition = true
+
+    if(pid){
+      setTimeout(()=>{
+        res(pid ? products.find(product=>product.id==pid) : products)
+      },3000)
+        
+     } else{
+      
+    }
+
+}) 
