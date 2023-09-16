@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import CartWidget from '../cartwidget/cartwidget';
+import { NavLink } from 'react-router-dom';
 
 
 function NavBar() {
@@ -12,12 +13,16 @@ function NavBar() {
         <Container>
           <Navbar.Brand href="#home">AeromodelismoDino</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Inicio</Nav.Link>
+            <Nav.Link as={NavLink} to='/'>Inicio</Nav.Link>
             <Nav.Link href="#features">Ofertas</Nav.Link>
             <Nav.Link href="#pricing">Sobre Nosotros</Nav.Link>
           </Nav>
         </Container>
-        <CartWidget />
+        <nav>
+
+          <CartWidget />
+          
+        </nav>
       </Navbar>
 
     </>
